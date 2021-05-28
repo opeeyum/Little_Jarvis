@@ -49,7 +49,7 @@ def commands(statement)->int:
         elif 'stand by' in statement or "wait" in statement:
             va.standby()
         
-        elif 'demonstration mode' in statement or 'demonstrate' in statement:
+        elif 'demonstration mode' in statement or 'tell me about yourself' in statement:
             va.speak("Switching to Demonstration mode.")
             Demon.demonstration()
             va.speak("Demonstration Completed.")       

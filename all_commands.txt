@@ -1,3 +1,6 @@
+ speak Hello, I am Jarvis, a Python based bot.
+ speak configured specially for windows OS, developed by O and P.
+ speak Let me tell you my features one by one.
  speak I can tell you time.
  tell me time
  speak I can tell you date.
