@@ -8,15 +8,17 @@ import pyjokes
 import TYPE_MODE
 import COMMANDS
 
-def speak(text):
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 160)
+engine = pyttsx3.init()
+engine.setProperty('rate', 160)
+
+def speak(text):    
     engine.say(text)
     engine.runAndWait()
 
 def OPEN(text):
     if text.strip():
         pg.hotkey('win', 's')
+        time.sleep(1)
         pg.write(text, interval=0.01)
         pg.press("enter")
 
@@ -34,8 +36,9 @@ def wishMe():
 
 def takeCommand():
     r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening...")
+    with sr.Microphone() as source:        
+        r.adjust_for_ambient_noise(source, duration=2)
+        speak("Listening...")
         audio=r.listen(source)
 
         try:
@@ -53,18 +56,24 @@ def standby():
         statement = takeCommand().lower()
         if statement==0:
             continue
-
         elif 'wake up' in statement or 'back to work' in statement:
+            wishMe()
             return
 
 if __name__=='__main__':
     speak("Little Jarvis at your service sir. ")
     wishMe()
-    val = 1
-    while val:  
-        speak("Tell me how can I help you now?   ")      
+    speak("How can I help you now.")
+    val = 1; flag = 0
+    while val:    
         statement = takeCommand().lower()
         if statement==0:
-            continue
-        else: 
-            val = COMMANDS.commands(statement)
+            continue            
+        elif "go to typing mode" in statement or "start typing" in statement:
+            flag = 1
+            speak("Ready to type sir, ")
+            continue 
+        elif not flag: 
+            val = COMMANDS.commands(statement)            
+        elif flag:
+            flag = TYPE_MODE.type_commands(statement)

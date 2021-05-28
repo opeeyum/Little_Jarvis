@@ -3,9 +3,15 @@ import Demon
 
 def commands(statement)->int:
     try:
+
         if "goodbye" in statement or "ok bye" in statement or "stop" in statement or "bye" in statement:
             va.speak('Good bye SIR')
             return 0
+
+        elif "speak" in statement:
+            statement = statement.replace("speak", "")
+            va.speak(statement)
+
         elif 'time' in statement:
             strTime = va.datetime.datetime.now().strftime("%H:%M:%S")
             va.speak(f"current time is {strTime}")
@@ -16,12 +22,11 @@ def commands(statement)->int:
             va.speak(f"Todays date is {strTime}")
         
         elif 'open' in statement:
+            if 'jarvis' in statement:
+                statement = statement.replace("jarvis", "")
             statement =statement.replace("open", "")
             va.OPEN(statement)
-            va.time.sleep(3)
-        
-        elif 'go to typing mode' in statement or "start typing" in statement:
-            va.TYPE_MODE.type()
+            va.time.sleep(5)
 
         elif 'search for'  in statement:
             statement = statement.replace("search for", "")
@@ -45,12 +50,12 @@ def commands(statement)->int:
         elif 'stand by' in statement or "wait" in statement:
             va.standby()
         
-        elif 'go to demonstration mode' in statement or 'demonstrate' in statement:
+        elif 'demonstration mode' in statement or 'demonstrate' in statement:
             va.speak("Switching to Demonstration mode.")
             Demon.demonstration()
             va.speak("Demonstration Completed.")
         
-        elif statement.srtip():
+        elif statement.strip():
             va.speak("You said {}".format(statement))
 
     except:

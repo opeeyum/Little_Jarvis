@@ -17,21 +17,18 @@ def insert(sym):
         'question mark': '?',
         "plus": "+",
         "minus": '-',
+        'dash': "-",
+        "percent": "%",
+        'address of': '&'
     }
     try:
         va.pg.write(symbols.get(sym))
     except:
         pass
 
-def type():
-    va.speak("Ready to type sir.")     
-    while True:            
-        statement = va.takeCommand().lower()
-
-        if statement==0:
-            continue
-
-        elif 'type' in statement:
+def type_commands(statement):
+    
+        if 'type' in statement:
             statement = statement.replace("type", "")
             va.pg.write(statement)
 
@@ -43,7 +40,7 @@ def type():
 
         elif 'stop typing' in statement:
             va.speak('Leaving typing mode')          
-            return
+            return 0
         
         elif 'press enter' in statement or 'enter' in statement:
             va.pg.press('enter')
@@ -60,6 +57,25 @@ def type():
         
         elif 'move right' in statement:
            va.pg.press('right')
+
+        elif 'move up' in statement:
+           va.pg.press('up')
+        
+        elif 'move down' in statement:
+           va.pg.press('down')
+        
+        elif 'stand by' in statement or "wait" in statement:
+            va.standby()
+        elif 'delay' in statement:
+            va.time.sleep(2)
+        
+        else:
+            va.speak("I am in typing mode.")
+
+        return 1
+
+
+
 
 
             

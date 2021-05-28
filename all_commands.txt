@@ -1,10 +1,21 @@
- I can tell you time
- I can tell you date
- I can tell you a joke 
- I can open
+ speak I can tell you time.
+ speak I can tell you date.
+ speak I can tell you a joke. 
+ speak I can open, close, and switch between, any application in your computer.
  open camera
- open wps office
- switch
- next
- open chrome
- close
+ close camera
+ speak I can search anything on web.
+ speak I have dedicated typing mode, where I will type on your commands, at any text field.
+ speak Lets see that in notepad.
+ open notepad
+ go to typing mode
+ type I am ............ .
+ type I am demostrating myself.
+ delay 
+ close 
+ tab
+ enter
+ stop typing
+ speak I have demonstration mode where I tell you about all my features.
+
+ 
