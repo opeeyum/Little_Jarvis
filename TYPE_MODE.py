@@ -1,4 +1,4 @@
-import voice_assitant as va
+import voice_assistant as va
 
 def insert(sym):
     symbols = {
