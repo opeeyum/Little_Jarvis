@@ -1,9 +1,8 @@
-import voice_assitant as va
+import voice_assistant as va
 import Demon
 
 def commands(statement)->int:
     try:
-
         if "goodbye" in statement or "ok bye" in statement or "stop" in statement or "bye" in statement:
             va.speak('Good bye SIR')
             return 0
@@ -28,7 +27,7 @@ def commands(statement)->int:
             va.OPEN(statement)
             va.time.sleep(5)
 
-        elif 'search for'  in statement:
+        elif 'search for' in statement or 'search' in statement:
             statement = statement.replace("search for", "")
             if 'jarvis' in statement:
                 statement = statement.replace("jarvis", "")
@@ -53,7 +52,16 @@ def commands(statement)->int:
         elif 'demonstration mode' in statement or 'demonstrate' in statement:
             va.speak("Switching to Demonstration mode.")
             Demon.demonstration()
-            va.speak("Demonstration Completed.")
+            va.speak("Demonstration Completed.")       
+        
+        elif 'press enter' in statement or 'enter' in statement:
+            va.pg.press('enter')
+
+        elif 'press tab' in statement or 'tab' in statement:
+            va.pg.press('tab')
+        
+        elif 'delay' in statement:
+            va.time.sleep(2) 
         
         elif statement.strip():
             va.speak("You said {}".format(statement))

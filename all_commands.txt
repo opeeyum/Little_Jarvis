@@ -1,21 +1,28 @@
  speak I can tell you time.
+ tell me time
  speak I can tell you date.
+ tell me date
  speak I can tell you a joke. 
+ tell me a joke
  speak I can open, close, and switch between, any application in your computer.
  open camera
+ speak I opened the camera and going to close it.
  close camera
  speak I can search anything on web.
  speak I have dedicated typing mode, where I will type on your commands, at any text field.
  speak Lets see that in notepad.
  open notepad
  go to typing mode
+ delay
  type I am ............ .
  type I am demostrating myself.
- delay 
+ speak See, I typed that
  close 
- tab
- enter
+ delay
+ press tab
+ press enter
  stop typing
+ speak I have one more feature 
  speak I have demonstration mode where I tell you about all my features.
 
  

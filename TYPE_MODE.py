@@ -28,7 +28,10 @@ def insert(sym):
 
 def type_commands(statement):
     
-        if 'type' in statement:
+        if "speak" in statement:
+            va.speak(statement)
+            
+        elif 'type' in statement:
             statement = statement.replace("type", "")
             va.pg.write(statement)
 
@@ -66,9 +69,9 @@ def type_commands(statement):
         
         elif 'stand by' in statement or "wait" in statement:
             va.standby()
+
         elif 'delay' in statement:
-            va.time.sleep(2)
-        
+            va.time.sleep(2)        
         else:
             va.speak("I am in typing mode.")
 

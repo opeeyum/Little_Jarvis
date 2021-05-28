@@ -34,11 +34,12 @@ def wishMe():
         speak("Hello Sir,Good Evening")
         print("Hello Sir,Good Evening")
 
-def takeCommand():
+def takeCommand(st:int=1):
     r = sr.Recognizer()
     with sr.Microphone() as source:        
         r.adjust_for_ambient_noise(source, duration=2)
-        speak("Listening...")
+        if st:speak("Listening...")
+        else:print("Listening...")
         audio=r.listen(source)
 
         try:
@@ -46,14 +47,14 @@ def takeCommand():
             print(f"user said:{statement}\n")
 
         except Exception as e:
-            speak("Sorry, can you please say that again")
-            return "None"
+            if st: speak("Sorry, can you please say that again")
+            return ""
         return statement
 
 def standby():
     speak("Starting Standby mode Sir.")     
     while True:            
-        statement = takeCommand().lower()
+        statement = takeCommand(0).lower()
         if statement==0:
             continue
         elif 'wake up' in statement or 'back to work' in statement:
@@ -71,7 +72,8 @@ if __name__=='__main__':
             continue            
         elif "go to typing mode" in statement or "start typing" in statement:
             flag = 1
-            speak("Ready to type sir, ")
+            speak("Ready to type sir, make sure cursor is in place.")
+            COMMANDS.commands("delay")
             continue 
         elif not flag: 
             val = COMMANDS.commands(statement)            
