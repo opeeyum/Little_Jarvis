@@ -41,7 +41,9 @@ def commands(statement)->int:
             va.pg.hotkey('win', 'd')
 
         elif 'switch tab' in statement or 'switch' in statement or 'next' in statement:
-            va.pg.hotkey('alt', 'tab')
+            va.pg.keyDown('alt')
+            va.pg.press('tab', presses=2)
+            va.pg.keyUp('alt')
 
         elif 'close' in statement:
             va.pg.hotkey('alt', 'f4')
